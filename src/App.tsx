@@ -4,7 +4,7 @@ import { Chat } from "@/routes";
 
 const App: FC = () => {
   return (
-    <Theme appearance="dark" accentColor="red" radius="medium" scaling="100%">
+    <Theme appearance="dark" accentColor="red" radius="full" scaling="100%">
       <Chat />
     </Theme>
   );
