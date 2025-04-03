@@ -1,1 +1,0 @@
-export { GlowBackground } from './GlowBackground';
