@@ -1,26 +1,16 @@
-import styled from 'styled-components';
-import { Avatar, Card } from '@radix-ui/themes';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const StyledAvatar = styled(Avatar)`
-  position: absolute;
-  left: -45px;
-  box-shadow:
-    0 5px 10px -3px rgba(0, 0, 0, 0.1),
-    0 0px 9px -3px rgba(0, 0, 0, 0.15);
-`;
-
-export const OutputContainer = styled(Card)`
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
-  margin-bottom: 1.5rem;
-
+export const OutputContainer = styled.div`
   h1 {
     font-size: calc(var(--font-size-8) * var(--heading-font-size-adjust));
     --line-height: var(--heading-line-height-8);
-    letter-spacing: calc(var(--letter-spacing-8) + var(--heading-letter-spacing));
+    letter-spacing: calc(
+      var(--letter-spacing-8) + var(--heading-letter-spacing)
+    );
     margin: 0;
     font-family: var(--heading-font-family);
     font-style: var(--heading-font-style);

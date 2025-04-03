@@ -1,40 +1,39 @@
-import type { FC } from 'react';
-import { Text } from '@radix-ui/themes';
-import ReactMarkdown from 'react-markdown';
-import { Wrapper, StyledAvatar, OutputContainer } from './Message.styles';
-import UserIcon from '@/assets/User.png';
-import AiIcon from '@/assets/Ai.png';
+import type { FC } from "react";
+import { Text, Card, Flex, Avatar } from "@radix-ui/themes";
+import ReactMarkdown from "react-markdown";
+import { Wrapper, OutputContainer } from "./Message.styles";
 
 interface Props {
-  type: 'Human' | 'Ai';
+  type: "Human" | "Ai";
   message: string;
 }
 
-const Message: FC<Props> = ({ type, message, ...rest }) => {
-  const isHuman = type === 'Human';
-  const renderHumanMessage = () => (
-    <Text size="3" color="gray" {...rest}>
-      {message}
-    </Text>
+const renderHumanMessage = (message: string) => (
+  <div style={{ width: "fit-content" }}>
+    <Card>
+      <Flex gap="3">
+        <Avatar fallback="U" size="1" />
+        <Text size="2" color="gray">
+          {message}
+        </Text>
+      </Flex>
+    </Card>
+  </div>
+);
+const renderAiMessage = (message: string) => {
+  return (
+    <OutputContainer>
+      <ReactMarkdown>{message}</ReactMarkdown>
+    </OutputContainer>
   );
-  const renderAiMessage = () => {
-    return (
-      <OutputContainer variant="surface" size="2" {...rest}>
-        <ReactMarkdown>{message}</ReactMarkdown>
-      </OutputContainer>
-    );
-  };
+};
+
+const Message: FC<Props> = ({ type, message }) => {
+  const isHuman = type === "Human";
 
   return (
     <Wrapper>
-      <StyledAvatar
-        size="1"
-        src={isHuman ? UserIcon : AiIcon}
-        fallback={isHuman ? 'U' : 'Ai'}
-        color={isHuman ? 'gray' : 'teal'}
-        mt={isHuman ? '0' : '4'}
-      />
-      {isHuman ? renderHumanMessage() : renderAiMessage()}
+      {isHuman ? renderHumanMessage(message) : renderAiMessage(message)}
     </Wrapper>
   );
 };
