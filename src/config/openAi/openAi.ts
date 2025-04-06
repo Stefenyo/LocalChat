@@ -1,8 +1,9 @@
-import { ChatOpenAI, OpenAIEmbeddings } from '@langchain/openai';
+import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 
 const OPEN_AI_API_KEY = import.meta.env.VITE_OPEN_AI_API_KEY as string;
 
-if (!OPEN_AI_API_KEY) throw new Error('Missing OpenAI API key name in .env file');
+if (!OPEN_AI_API_KEY)
+  throw new Error("Missing OpenAI API key name in .env file");
 
 const chat = new ChatOpenAI({
   openAIApiKey: OPEN_AI_API_KEY,
