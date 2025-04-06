@@ -1,1 +1,0 @@
-export { BackgroundScene } from "./BackgroundScene";
