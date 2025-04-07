@@ -5,10 +5,9 @@ import { colorConfigs, type ColorConfigKeys } from "./colorConfigs";
 
 interface Props {
   color: ColorConfigKeys;
-  brightness: number;
 }
 
-const ShaderGradientBg: FC<Props> = ({ color, brightness }) => {
+const ShaderGradientBg: FC<Props> = ({ color }) => {
   return (
     <ShaderGradientCanvas
       style={{
@@ -21,10 +20,7 @@ const ShaderGradientBg: FC<Props> = ({ color, brightness }) => {
       }}
       pointerEvents="none"
     >
-      <ShaderGradient
-        control="props"
-        {...{ ...colorConfigs[color], brightness }}
-      />
+      <ShaderGradient control="props" {...{ ...colorConfigs[color] }} />
     </ShaderGradientCanvas>
   );
 };
