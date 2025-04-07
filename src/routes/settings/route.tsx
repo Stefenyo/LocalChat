@@ -33,12 +33,12 @@ const SettingsLayoutComponent = () => {
             <ArrowLeftIcon /> return to chat
           </Link>
         </Button>
-        <Flex direction="column" gap="8" flexGrow="1" mt="6">
+        <Flex direction="column" flexGrow="1" mt="6">
           <Heading size="9" weight="medium">
             Settings
           </Heading>
 
-          <TabNav.Root>
+          <TabNav.Root mt="8" mb="6">
             {settingsUrls.map((item) => (
               <TabNav.Link
                 asChild
