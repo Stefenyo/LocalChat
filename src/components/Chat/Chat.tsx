@@ -91,7 +91,7 @@ const Chat: FC = () => {
         align="center"
         data-testid="intro-heading"
       >
-        Content Generator
+        LocalChat
       </Heading>
     ) : null;
 
