@@ -1,0 +1,1 @@
+export { useGetResponse } from "./useGetResponse";
