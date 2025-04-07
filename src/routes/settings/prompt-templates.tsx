@@ -12,7 +12,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const PromptTemplatesComponent = () => {
   return (
-    <div>
+    <Flex direction="column" gap="6">
       <BasePromptInput />
 
       <Card variant="surface">
@@ -75,7 +75,7 @@ const PromptTemplatesComponent = () => {
           </Text>
         </Flex>
       </Card>
-    </div>
+    </Flex>
   );
 };
 
