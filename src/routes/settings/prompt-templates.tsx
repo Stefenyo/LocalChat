@@ -19,7 +19,7 @@ const PromptTemplatesComponent = () => {
         <Flex direction="column" gap="4">
           <Flex direction="row" gap="4" align="center" justify="between">
             <Text size="2" weight="bold">
-              Sub Prompt Templates
+              Sub Prompt Templates - Work in progress
             </Text>
 
             <Dialog.Root>
