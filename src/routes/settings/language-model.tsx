@@ -23,10 +23,10 @@ const LanguageModelsComponent = () => {
         </Text>
         <div>
           <Select.Root
-            defaultValue={selectedModel || modelList[0]}
+            defaultValue={selectedModel}
             onValueChange={updateSelectedModel}
           >
-            <Select.Trigger />
+            <Select.Trigger placeholder="Models" />
             <Select.Content>
               <Select.Group>
                 <Select.Label>Models</Select.Label>
