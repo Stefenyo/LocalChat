@@ -1,3 +1,4 @@
+import { BasePromptInput } from "@/components/BasePromptInput";
 import {
   Button,
   Card,
@@ -12,25 +13,7 @@ import { createFileRoute } from "@tanstack/react-router";
 const PromptTemplatesComponent = () => {
   return (
     <div>
-      <Card variant="surface" mt="6">
-        <Flex direction="column" gap="4">
-          <Text size="2" weight="regular">
-            Base Prompt Template
-          </Text>
-
-          <Text size="2" weight="regular" color="gray">
-            Add a custom prompt template that will be used as the base prompt
-            for the AI model.
-          </Text>
-          <TextArea
-            placeholder="Enter your custom prompt here"
-            size="2"
-            style={{ width: "100%", height: "250px" }}
-          />
-        </Flex>
-        {/* Implement logic to add additonal prompt templates that will be added
-        to the base prompt // to influence the AI model's response. */}
-      </Card>
+      <BasePromptInput />
 
       <Card variant="surface" mt="6">
         <Flex direction="column" gap="4">
@@ -88,8 +71,8 @@ const PromptTemplatesComponent = () => {
           </Flex>
 
           <Text size="2" weight="regular" color="gray">
-            Add content addtional prompt templates that can be added to the base
-            prompt to influence the AI model's response.
+            Add addtional prompt templates that can be added to the base prompt
+            to influence the AI model's response.
           </Text>
         </Flex>
       </Card>
