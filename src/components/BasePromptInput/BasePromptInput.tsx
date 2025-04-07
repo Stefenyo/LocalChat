@@ -13,10 +13,10 @@ const BasePromptInput = () => {
   };
 
   return (
-    <Card variant="surface" mt="6">
+    <Card variant="surface">
       <Flex direction="column" gap="4">
         <Flex direction="row" gap="4" align="center" justify="between">
-          <Text size="2" weight="regular">
+          <Text size="2" weight="bold">
             Base Prompt Template
           </Text>
 
