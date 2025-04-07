@@ -8,13 +8,13 @@ import {
 } from "react";
 import { StyledFormWrapper } from "./Chat.styles";
 import { Flex, Heading, Spinner, Text, TextArea } from "@radix-ui/themes";
-import { getResponse } from "@/utils";
 import { Message } from "@/components/Message";
 import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
 import type { Document } from "langchain/document";
 import { useSelectedModel } from "@/hooks/useSelectedModel";
 import { ErrorMessage } from "../ErrorMessage";
 import { Link } from "@tanstack/react-router";
+import { useGetResponse } from "@/hooks/useGetResponse";
 
 interface Message {
   type: "Human" | "Ai";
@@ -31,6 +31,7 @@ const Chat: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { selectedModel } = useSelectedModel();
+  const getResponse = useGetResponse();
 
   const chatHistory = useMemo(() => {
     return messages
@@ -50,9 +51,11 @@ const Chat: FC = () => {
 
   const handleSubmit = async () => {
     const { value: userInput } = textAreaRef?.current ?? {};
-    console.log("userInput", textAreaRef?.current?.value);
+
+    // console.log("userInput", textAreaRef?.current?.value);
     if (!userInput || !userInput?.trim()) return;
 
+    console.log("userInput", textAreaRef?.current?.value);
     setMessages((state) => [...state, { type: "Human", message: userInput }]);
 
     clearUI();
