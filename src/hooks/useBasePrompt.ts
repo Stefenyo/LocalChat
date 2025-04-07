@@ -1,7 +1,9 @@
 import { useState } from "react";
 
+const LOCALSTORAGE_KEY = "basePrompt";
+
 const initializeBasePrompt = () => {
-  const storedBasePrompt = localStorage.getItem("basePrompt");
+  const storedBasePrompt = localStorage.getItem(LOCALSTORAGE_KEY);
 
   return storedBasePrompt
     ? storedBasePrompt
@@ -16,7 +18,7 @@ const useBasePrompt = () => {
   };
 
   const saveBasePrompt = (newBasePrompt: string) => {
-    localStorage.setItem("basePrompt", newBasePrompt);
+    localStorage.setItem(LOCALSTORAGE_KEY, newBasePrompt);
   };
 
   return {
