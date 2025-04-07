@@ -1,9 +1,11 @@
-import { useGetOllamaModels } from "@/hooks/useGetOllamaModels";
-import { Card, Select } from "@radix-ui/themes";
 import { createFileRoute } from "@tanstack/react-router";
+import { useGetOllamaModels } from "@/hooks/useGetOllamaModels";
+import { useSelectedModel } from "@/hooks/useSelectedModel";
+import { Card, Select } from "@radix-ui/themes";
 
 const LanguageModelsComponent = () => {
   const { modelList, isLoading } = useGetOllamaModels();
+  const { selectedModel, updateSelectedModel } = useSelectedModel();
 
   if (isLoading) return <Card variant="surface">Loading model ...</Card>;
   if (!modelList || !modelList.length)
@@ -11,7 +13,10 @@ const LanguageModelsComponent = () => {
 
   return (
     <Card variant="surface">
-      <Select.Root defaultValue="apple">
+      <Select.Root
+        defaultValue={selectedModel || modelList[0]}
+        onValueChange={updateSelectedModel}
+      >
         <Select.Trigger />
         <Select.Content>
           <Select.Group>
