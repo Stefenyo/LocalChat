@@ -31,7 +31,7 @@ const BasePromptInput = () => {
         </Flex>
 
         <Text size="2" weight="regular" color="gray">
-          Add a custom prompt template that will be used as the base prompt for
+          Add a base prompt template that will be used as the base prompt for
           the AI model.
         </Text>
         <TextArea

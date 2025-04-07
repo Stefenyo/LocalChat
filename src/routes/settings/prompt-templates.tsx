@@ -19,7 +19,7 @@ const PromptTemplatesComponent = () => {
         <Flex direction="column" gap="4">
           <Flex direction="row" gap="4" align="center" justify="between">
             <Text size="2" weight="regular">
-              Content Type Prompts
+              Sub Prompt Templates
             </Text>
 
             <Dialog.Root>
@@ -30,9 +30,7 @@ const PromptTemplatesComponent = () => {
               </Dialog.Trigger>
 
               <Dialog.Content maxWidth="450px">
-                <Dialog.Title>
-                  Add new content type prompt template
-                </Dialog.Title>
+                <Dialog.Title>Add new sub prompt template</Dialog.Title>
 
                 <Flex direction="column" gap="3">
                   <label>
@@ -71,8 +69,9 @@ const PromptTemplatesComponent = () => {
           </Flex>
 
           <Text size="2" weight="regular" color="gray">
-            Add addtional prompt templates that can be added to the base prompt
-            to influence the AI model's response.
+            Add sub prompt templates that can be added to the base prompt to
+            influence the AI model's response. These can be selected from the
+            chat UI.
           </Text>
         </Flex>
       </Card>
