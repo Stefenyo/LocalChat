@@ -12,6 +12,9 @@ import { getResponse } from "@/utils";
 import { Message } from "@/components/Message";
 import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
 import type { Document } from "langchain/document";
+import { useSelectedModel } from "@/hooks/useSelectedModel";
+import { ErrorMessage } from "../ErrorMessage";
+import { Link } from "@tanstack/react-router";
 
 interface Message {
   type: "Human" | "Ai";
@@ -26,6 +29,8 @@ const Chat: FC = () => {
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { selectedModel } = useSelectedModel();
 
   const chatHistory = useMemo(() => {
     return messages
@@ -129,8 +134,19 @@ const Chat: FC = () => {
     });
   };
 
+  const renderNoModelError = () =>
+    !selectedModel ? (
+      <ErrorMessage>
+        No model selected. Please select a model in the{" "}
+        <Link to="/settings/language-model" style={{ color: "var(--gray-12)" }}>
+          settings menu
+        </Link>
+      </ErrorMessage>
+    ) : null;
+
   return (
     <>
+      {renderNoModelError()}
       <StyledFlexContainer align="center" justify="center" ref={containerRef}>
         <Flex direction="column" gap="8" flexGrow="1">
           {renderIntro()}
@@ -153,6 +169,7 @@ const Chat: FC = () => {
               }
             }}
             ref={textAreaRef}
+            disabled={!selectedModel || isLoading}
           />
         </form>
         <Text size="1" style={{ color: "var(--gray-a9)" }}>
