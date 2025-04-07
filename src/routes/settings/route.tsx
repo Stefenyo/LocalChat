@@ -8,11 +8,11 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 
-const urls = [
+const settingsUrls = [
   { url: "/settings/prompt-templates", title: "Prompt Templates" },
   { url: "/settings/language-model", title: "Language Model" },
   { url: "/settings/appearance", title: "Appearance" },
-];
+] as const;
 
 const SettingsLayoutComponent = () => {
   const currentPath = useRouterState({
@@ -39,7 +39,7 @@ const SettingsLayoutComponent = () => {
           </Heading>
 
           <TabNav.Root>
-            {urls.map((item) => (
+            {settingsUrls.map((item) => (
               <TabNav.Link
                 asChild
                 key={item.url}
@@ -61,3 +61,5 @@ const Route = createFileRoute("/settings")({
 });
 
 export { Route };
+// eslint-disable-next-line react-refresh/only-export-components
+export { settingsUrls };

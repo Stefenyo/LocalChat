@@ -2,6 +2,7 @@ import { GearIcon } from "@radix-ui/react-icons";
 import { Button, DropdownMenu } from "@radix-ui/themes";
 import { FC } from "react";
 import { useNavigate } from "@tanstack/react-router";
+import { settingsUrls } from "@/routes/settings/route";
 
 const UserMenu: FC = () => {
   const navigate = useNavigate();
@@ -15,21 +16,15 @@ const UserMenu: FC = () => {
           </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
-          <DropdownMenu.Item
-            onClick={() => navigate({ to: "/settings/prompt-templates" })}
-          >
-            Prompt Templates
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            onClick={() => navigate({ to: "/settings/language-model" })}
-          >
-            Language Model
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            onClick={() => navigate({ to: "/settings/appearance" })}
-          >
-            Appearance
-          </DropdownMenu.Item>
+          {settingsUrls.map((item) => (
+            <DropdownMenu.Item
+              key={item.url}
+              onClick={() => navigate({ to: item.url })}
+              style={{ cursor: "pointer" }}
+            >
+              {item.title}
+            </DropdownMenu.Item>
+          ))}
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </div>
