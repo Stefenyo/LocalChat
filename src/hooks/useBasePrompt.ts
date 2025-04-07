@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LOCALSTORAGE_KEY = "basePrompt";
+const LOCALSTORAGE_KEY = "LC_basePrompt";
 
 const initializeBasePrompt = () => {
   const storedBasePrompt = localStorage.getItem(LOCALSTORAGE_KEY);
