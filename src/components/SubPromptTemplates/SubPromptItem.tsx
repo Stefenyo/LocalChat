@@ -25,11 +25,20 @@ const SubPromptItem: FC<Props> = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
 
+  const renderModal = () =>
+    editMode ? (
+      <Modal
+        onClose={() => setEditMode(false)}
+        onSave={onEditComplete}
+        initialValues={{ title, prompt }}
+      />
+    ) : null;
+
   return (
     <>
       <Separator orientation="horizontal" size="4" />
       <Flex direction="row" gap="6" justify="between" pt="4" pb="4">
-        <div style={{ width: "100px" }}>
+        <div style={{ width: "160px" }}>
           <Text size="1" weight="bold">
             {title}
           </Text>
@@ -57,12 +66,7 @@ const SubPromptItem: FC<Props> = ({
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </Flex>
-      <Modal
-        isOpen={editMode}
-        onClose={() => setEditMode(false)}
-        onSave={onEditComplete}
-        initialValues={{ title, prompt }}
-      />
+      {renderModal()}
     </>
   );
 };

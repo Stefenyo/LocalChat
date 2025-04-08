@@ -15,6 +15,11 @@ const SubPromptTemplates: FC = () => {
 
   const toggleAddModal = () => setIsModalOpen((prev) => !prev);
 
+  const renderModal = () =>
+    isModalOpen ? (
+      <Modal onClose={toggleAddModal} onSave={addSubPrompt} />
+    ) : null;
+
   return (
     <>
       <Card variant="surface">
@@ -57,11 +62,7 @@ const SubPromptTemplates: FC = () => {
           </Box>
         ) : null}
       </Card>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={toggleAddModal}
-        onSave={addSubPrompt}
-      />
+      {renderModal()}
     </>
   );
 };

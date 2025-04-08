@@ -10,13 +10,12 @@ import {
 import { type SubPrompt } from "@/hooks/useSubPrompts";
 
 interface Props {
-  isOpen: boolean;
   initialValues?: SubPrompt;
   onClose: () => void;
   onSave: (subprompt: SubPrompt) => void;
 }
 
-const Modal: FC<Props> = ({ isOpen, onClose, onSave, initialValues }) => {
+const Modal: FC<Props> = ({ onClose, onSave, initialValues }) => {
   const [title, setTitle] = useState<string>(initialValues?.title || "");
   const [prompt, setPrompt] = useState<string>(initialValues?.prompt || "");
 
@@ -36,7 +35,7 @@ const Modal: FC<Props> = ({ isOpen, onClose, onSave, initialValues }) => {
   };
 
   return (
-    <Dialog.Root open={isOpen}>
+    <Dialog.Root open>
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Sub Prompt Template</Dialog.Title>
 
