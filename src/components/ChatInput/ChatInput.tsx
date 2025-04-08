@@ -1,5 +1,6 @@
 import { TextArea } from "@radix-ui/themes";
 import * as React from "react";
+import { StyledTextArea } from "./ChatInput.style";
 
 export interface Props extends React.ComponentPropsWithoutRef<typeof TextArea> {
   maxHeight?: number;
@@ -31,7 +32,7 @@ export const ChatInput = React.forwardRef<HTMLTextAreaElement, Props>(
     }, [props.value, resize]);
 
     return (
-      <TextArea
+      <StyledTextArea
         {...props}
         ref={setRefs}
         onInput={(e) => {
