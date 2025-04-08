@@ -15,16 +15,12 @@ const useBasePrompt = () => {
 
   const updateBasePrompt = (newBasePrompt: string) => {
     setBasePrompt(newBasePrompt);
-  };
-
-  const saveBasePrompt = (newBasePrompt: string) => {
     localStorage.setItem(LOCALSTORAGE_KEY, newBasePrompt);
   };
 
   return {
     basePrompt,
     updateBasePrompt,
-    saveBasePrompt,
   };
 };
 

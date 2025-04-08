@@ -3,13 +3,12 @@ import { useBasePrompt } from "@/hooks";
 import { Button, Card, Flex, Text, TextArea } from "@radix-ui/themes";
 
 const BasePromptInput = () => {
-  const [isSavedRequired, setIsSavedRequired] = useState(false);
+  const { basePrompt: savedBasePrompt, updateBasePrompt } = useBasePrompt();
 
-  const { basePrompt, updateBasePrompt, saveBasePrompt } = useBasePrompt();
+  const [editedBasePrompt, setEditedBasePrompt] = useState(savedBasePrompt);
 
   const handleSave = () => {
-    saveBasePrompt(basePrompt);
-    setIsSavedRequired(false);
+    updateBasePrompt(editedBasePrompt);
   };
 
   return (
@@ -30,7 +29,8 @@ const BasePromptInput = () => {
             size="1"
             style={{ cursor: "pointer" }}
             onClick={handleSave}
-            disabled={!isSavedRequired}
+            disabled={editedBasePrompt === savedBasePrompt}
+            aria-label="Save base prompt template"
           >
             Save
           </Button>
@@ -39,10 +39,9 @@ const BasePromptInput = () => {
           placeholder="Enter your custom prompt here"
           size="2"
           style={{ width: "100%", height: "250px" }}
-          value={basePrompt}
+          value={editedBasePrompt}
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-            updateBasePrompt(e.target.value);
-            setIsSavedRequired(true);
+            setEditedBasePrompt(e.target.value);
           }}
         />
       </Flex>
