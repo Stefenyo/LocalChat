@@ -53,10 +53,17 @@ const SubPromptItem: FC<Props> = ({
             </IconButton>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
-            <DropdownMenu.Item onClick={() => setEditMode(true)}>
+            <DropdownMenu.Item
+              onClick={() => setEditMode(true)}
+              style={{ cursor: "pointer" }}
+            >
               Edit
             </DropdownMenu.Item>
-            <DropdownMenu.Item color="red" onClick={onDelete}>
+            <DropdownMenu.Item
+              color="red"
+              onClick={onDelete}
+              style={{ cursor: "pointer" }}
+            >
               Delete
             </DropdownMenu.Item>
           </DropdownMenu.Content>
