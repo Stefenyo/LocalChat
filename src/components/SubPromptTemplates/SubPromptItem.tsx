@@ -41,7 +41,7 @@ const SubPromptItem: FC<Props> = ({
           </Text>
         </div>
 
-        <DropdownMenu.Root>
+        <DropdownMenu.Root modal={false}>
           <DropdownMenu.Trigger>
             <IconButton variant="ghost" style={{ cursor: "pointer" }}>
               <DotsHorizontalIcon />
