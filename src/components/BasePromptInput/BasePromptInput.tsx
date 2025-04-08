@@ -16,9 +16,15 @@ const BasePromptInput = () => {
     <Card variant="surface">
       <Flex direction="column" gap="4">
         <Flex direction="row" gap="4" align="center" justify="between">
-          <Text size="2" weight="bold">
-            Base Prompt Template
-          </Text>
+          <Flex direction="column" gap="2" style={{ maxWidth: "30rem" }}>
+            <Text size="2" weight="bold">
+              Base Prompt Template
+            </Text>
+            <Text size="1" weight="regular" color="gray">
+              Add a base prompt template that will be used as the base prompt
+              for the AI model.
+            </Text>
+          </Flex>
 
           <Button
             size="1"
@@ -29,11 +35,6 @@ const BasePromptInput = () => {
             Save
           </Button>
         </Flex>
-
-        <Text size="2" weight="regular" color="gray">
-          Add a base prompt template that will be used as the base prompt for
-          the AI model.
-        </Text>
         <TextArea
           placeholder="Enter your custom prompt here"
           size="2"
