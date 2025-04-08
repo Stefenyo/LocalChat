@@ -10,7 +10,12 @@ const UserMenu: FC = () => {
     <div style={{ position: "fixed", top: "1rem", right: "1rem" }}>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <Button variant="solid" radius="large" size="3">
+          <Button
+            variant="solid"
+            radius="large"
+            size="3"
+            style={{ cursor: "pointer" }}
+          >
             <GearIcon style={{ width: "18px", height: "18px" }} />
             <DropdownMenu.TriggerIcon />
           </Button>
