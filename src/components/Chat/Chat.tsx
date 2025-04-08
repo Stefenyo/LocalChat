@@ -7,7 +7,7 @@ import {
   useMemo,
 } from "react";
 import { StyledFormWrapper } from "./Chat.styles";
-import { Flex, Heading, Spinner, Text, TextArea } from "@radix-ui/themes";
+import { Flex, Heading, Spinner, Text } from "@radix-ui/themes";
 import { Message } from "@/components/Message";
 import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
 import type { Document } from "langchain/document";
@@ -15,6 +15,7 @@ import { useSelectedModel } from "@/hooks/useSelectedModel";
 import { ErrorMessage } from "../ErrorMessage";
 import { Link } from "@tanstack/react-router";
 import { useGetResponse } from "@/hooks/useGetResponse";
+import { ChatInput } from "../ChatInput";
 
 interface Message {
   type: "Human" | "Ai";
@@ -159,22 +160,19 @@ const Chat: FC = () => {
         </Flex>
       </StyledFlexContainer>
       <StyledFormWrapper variant="surface">
-        <form onSubmit={handleSubmit}>
-          <TextArea
-            placeholder="How can I help today?"
-            resize="vertical"
-            size="2"
-            mb="2"
-            onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmit();
-              }
-            }}
-            ref={textAreaRef}
-            disabled={!selectedModel || isLoading}
-          />
-        </form>
+        <ChatInput
+          maxHeight={200}
+          mb="2"
+          placeholder="How can I help you today?"
+          ref={textAreaRef}
+          onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handleSubmit();
+            }
+          }}
+          disabled={!selectedModel || isLoading}
+        />
         <Text size="1" style={{ color: "var(--gray-a9)" }}>
           Powered by ollama
         </Text>
