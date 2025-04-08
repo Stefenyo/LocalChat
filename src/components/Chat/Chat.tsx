@@ -7,7 +7,7 @@ import {
   useMemo,
 } from "react";
 import { StyledFormWrapper } from "./Chat.styles";
-import { Flex, Heading, Spinner, Text } from "@radix-ui/themes";
+import { Flex, Heading, Spinner } from "@radix-ui/themes";
 import { Message } from "@/components/Message";
 import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
 import type { Document } from "langchain/document";
@@ -173,9 +173,6 @@ const Chat: FC = () => {
           }}
           disabled={!selectedModel || isLoading}
         />
-        <Text size="1" style={{ color: "var(--gray-a9)" }}>
-          Powered by ollama
-        </Text>
       </StyledFormWrapper>
     </>
   );
