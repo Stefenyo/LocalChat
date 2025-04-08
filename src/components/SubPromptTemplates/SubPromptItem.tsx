@@ -38,17 +38,13 @@ const SubPromptItem: FC<Props> = ({
     <>
       <Separator orientation="horizontal" size="4" />
       <Flex direction="row" gap="6" justify="between" pt="4" pb="4">
-        <div style={{ width: "160px" }}>
-          <Text size="1" weight="bold">
-            {title}
-          </Text>
-        </div>
+        <Text size="1" weight="bold">
+          {title}
+        </Text>
 
-        <div style={{ flex: 1 }}>
-          <Text truncate size="1">
-            {prompt}
-          </Text>
-        </div>
+        <Text truncate size="1" style={{ flex: 1 }}>
+          {prompt}
+        </Text>
 
         <DropdownMenu.Root modal={false}>
           <DropdownMenu.Trigger>
