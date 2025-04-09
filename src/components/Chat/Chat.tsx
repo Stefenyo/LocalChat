@@ -149,7 +149,7 @@ const Chat: FC = () => {
     <>
       {renderNoModelError()}
       <StyledFlexContainer align="center" justify="center" ref={containerRef}>
-        <Flex direction="column" gap="8" flexGrow="1">
+        <Flex direction="column" gap="6" flexGrow="1">
           {renderIntro()}
           {renderMessages()}
           {renderCurrentResponse()}
