@@ -1,15 +1,17 @@
 import { useCallback } from "react";
 import { useBasePrompt } from "../useBasePrompt";
-import { useSelectedModel } from "../useSelectedModel";
 import { ChatOllama } from "@langchain/ollama";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { combinePromptTemplates } from "./generateCompletePrompt";
 
-export const useGetResponse = () => {
+interface Props {
+  selectedModel: string;
+}
+
+export const useGetResponse = ({ selectedModel }: Props) => {
   const { basePrompt } = useBasePrompt();
-  const { selectedModel } = useSelectedModel();
 
   const getResponse = useCallback(
     async ({ question, history }: { question: string; history: string }) => {
