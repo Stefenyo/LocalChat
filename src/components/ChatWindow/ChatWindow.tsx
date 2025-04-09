@@ -166,7 +166,7 @@ const ChatWindow: FC = () => {
           }}
           disabled={!selectedModel || isLoading}
         />
-        <Flex justify="between" align="center">
+        <Flex justify="between" align="center" pl="2" pr="2">
           <ModelSelect
             size="1"
             selectedModel={selectedModel}
