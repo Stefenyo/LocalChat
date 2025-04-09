@@ -93,7 +93,7 @@ const ChatWindow: FC = () => {
         align="center"
         data-testid="intro-heading"
       >
-        LocalChat
+        CAiO
       </Heading>
     ) : null;
 

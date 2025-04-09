@@ -1,6 +1,8 @@
-# LocalChat (WIP)
+# CAiO (WIP)
 
-Local Chat is a hobby project designed to experiment with new React technologies and UI techniques. While there are many chat interfaces available, this project serves as a playground for innovation and learning.
+I know, I know...the italian word is spelt "ciao"...relax.
+
+CAiO (Chat-Ai-Offline/Ollama) is a hobby project designed to experiment with new React technologies and UI techniques. While there are many chat interfaces available, this project serves as a playground for innovation and learning.
 
 ## Prerequisites
 
