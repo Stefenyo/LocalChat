@@ -1,34 +1,41 @@
-import { FileTextIcon } from "@radix-ui/react-icons";
-import { Button, Tooltip } from "@radix-ui/themes";
+import { ColorWheelIcon, FileTextIcon } from "@radix-ui/react-icons";
+import { Flex, IconButton, Tooltip } from "@radix-ui/themes";
 import { FC } from "react";
 import { useNavigate } from "@tanstack/react-router";
 
 const UserMenu: FC = () => {
   const navigate = useNavigate();
   return (
-    <div style={{ position: "fixed", top: "1.5rem", right: "1.5rem" }}>
+    <Flex
+      direction="column"
+      gap="5"
+      style={{ position: "fixed", top: "1.5rem", right: "1.5rem" }}
+    >
       <Tooltip content="Prompt Templates" side="right">
-        <Button
+        <IconButton
           variant="ghost"
           radius="large"
-          size="1"
+          size="3"
           style={{ cursor: "pointer" }}
           onClick={() => navigate({ to: "/prompt-templates/base" })}
         >
-          <FileTextIcon />
-        </Button>
+          <FileTextIcon style={{ width: "18px", height: "18px" }} />
+        </IconButton>
       </Tooltip>
-      {/* <Button
-        variant="ghost"
-        radius="large"
-        size="1"
-        style={{ cursor: "pointer" }}
-        onClick={() => navigate({ to: "/prompt-templates/base" })}
-      >
-        <FileTextIcon />
-        Prompt Templates
-      </Button> */}
-    </div>
+
+      <Tooltip content="Appearance" side="right">
+        <IconButton
+          variant="ghost"
+          radius="large"
+          size="3"
+          style={{ cursor: "pointer" }}
+          onClick={() => console.log("theme coming soons")}
+          disabled
+        >
+          <ColorWheelIcon style={{ width: "18px", height: "18px" }} />
+        </IconButton>
+      </Tooltip>
+    </Flex>
   );
 };
 
