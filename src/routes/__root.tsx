@@ -6,26 +6,24 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 // import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import {
-  ShaderGradientBg,
-  type ShaderGradientBgProps,
-} from "@/components/ShaderGradientBg";
+import { ShaderGradientBg } from "@/components/ShaderGradientBg";
 import { UserMenu } from "@/components/UserMenu";
 import { HomeButton } from "@/components/HomeButton/HomeButton";
-
-const theme = "aurora" as ShaderGradientBgProps["color"];
+import { useAppearance } from "@/hooks/useAppearance";
 
 const RouteComponent: FC = () => {
   const currentPath = useRouterState({
     select: (state) => state.location.pathname,
   });
 
+  const { config } = useAppearance();
+
   const renderBackButton = () => (currentPath !== "/" ? <HomeButton /> : null);
   return (
     <>
       <Theme
-        appearance="dark"
-        accentColor={theme === "aurora" ? "indigo" : theme}
+        appearance={config.appearance}
+        accentColor={config.accentColor}
         radius="large"
         scaling="100%"
         hasBackground={false}
@@ -34,7 +32,7 @@ const RouteComponent: FC = () => {
         <UserMenu />
         <Outlet />
       </Theme>
-      <ShaderGradientBg color={theme} />
+      <ShaderGradientBg color={config.bgGradient} />
       {/* <TanStackRouterDevtools /> */}
     </>
   );

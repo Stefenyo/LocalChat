@@ -1,10 +1,11 @@
 import type { ShaderGradientBgProps } from "@/components/ShaderGradientBg";
-import { useState } from "react";
+import { Theme } from "@radix-ui/themes";
+import { type ComponentProps, useState } from "react";
 
 interface ThemeConfig {
   bgGradient: ShaderGradientBgProps["color"];
   appearance: "dark" | "light";
-  accentColor: string;
+  accentColor: ComponentProps<typeof Theme>["accentColor"];
 }
 
 type Themes = {
@@ -22,9 +23,9 @@ const themes: Themes = {
     accentColor: "crimson",
   },
   green: {
-    bgGradient: "red",
+    bgGradient: "green",
     appearance: "dark",
-    accentColor: "emerald",
+    accentColor: "grass",
   },
 };
 
