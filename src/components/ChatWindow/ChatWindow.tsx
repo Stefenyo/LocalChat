@@ -47,8 +47,6 @@ const ChatWindow: FC = () => {
 
   const handleSubmit = async () => {
     const { value: userInput } = textAreaRef?.current ?? {};
-
-    // console.log("userInput", textAreaRef?.current?.value);
     if (!userInput || !userInput?.trim()) return;
 
     setMessages((state) => [...state, { type: "Human", message: userInput }]);
