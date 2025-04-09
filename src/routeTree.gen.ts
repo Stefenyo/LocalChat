@@ -14,7 +14,6 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as SettingsRouteImport } from './routes/settings/route'
 import { Route as IndexImport } from './routes/index'
 import { Route as SettingsPromptTemplatesImport } from './routes/settings/prompt-templates'
-import { Route as SettingsLanguageModelImport } from './routes/settings/language-model'
 import { Route as SettingsAppearanceImport } from './routes/settings/appearance'
 
 // Create/Update Routes
@@ -34,12 +33,6 @@ const IndexRoute = IndexImport.update({
 const SettingsPromptTemplatesRoute = SettingsPromptTemplatesImport.update({
   id: '/prompt-templates',
   path: '/prompt-templates',
-  getParentRoute: () => SettingsRouteRoute,
-} as any)
-
-const SettingsLanguageModelRoute = SettingsLanguageModelImport.update({
-  id: '/language-model',
-  path: '/language-model',
   getParentRoute: () => SettingsRouteRoute,
 } as any)
 
@@ -74,13 +67,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsAppearanceImport
       parentRoute: typeof SettingsRouteImport
     }
-    '/settings/language-model': {
-      id: '/settings/language-model'
-      path: '/language-model'
-      fullPath: '/settings/language-model'
-      preLoaderRoute: typeof SettingsLanguageModelImport
-      parentRoute: typeof SettingsRouteImport
-    }
     '/settings/prompt-templates': {
       id: '/settings/prompt-templates'
       path: '/prompt-templates'
@@ -95,13 +81,11 @@ declare module '@tanstack/react-router' {
 
 interface SettingsRouteRouteChildren {
   SettingsAppearanceRoute: typeof SettingsAppearanceRoute
-  SettingsLanguageModelRoute: typeof SettingsLanguageModelRoute
   SettingsPromptTemplatesRoute: typeof SettingsPromptTemplatesRoute
 }
 
 const SettingsRouteRouteChildren: SettingsRouteRouteChildren = {
   SettingsAppearanceRoute: SettingsAppearanceRoute,
-  SettingsLanguageModelRoute: SettingsLanguageModelRoute,
   SettingsPromptTemplatesRoute: SettingsPromptTemplatesRoute,
 }
 
@@ -113,7 +97,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/settings': typeof SettingsRouteRouteWithChildren
   '/settings/appearance': typeof SettingsAppearanceRoute
-  '/settings/language-model': typeof SettingsLanguageModelRoute
   '/settings/prompt-templates': typeof SettingsPromptTemplatesRoute
 }
 
@@ -121,7 +104,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/settings': typeof SettingsRouteRouteWithChildren
   '/settings/appearance': typeof SettingsAppearanceRoute
-  '/settings/language-model': typeof SettingsLanguageModelRoute
   '/settings/prompt-templates': typeof SettingsPromptTemplatesRoute
 }
 
@@ -130,7 +112,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/settings': typeof SettingsRouteRouteWithChildren
   '/settings/appearance': typeof SettingsAppearanceRoute
-  '/settings/language-model': typeof SettingsLanguageModelRoute
   '/settings/prompt-templates': typeof SettingsPromptTemplatesRoute
 }
 
@@ -140,21 +121,14 @@ export interface FileRouteTypes {
     | '/'
     | '/settings'
     | '/settings/appearance'
-    | '/settings/language-model'
     | '/settings/prompt-templates'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/settings'
-    | '/settings/appearance'
-    | '/settings/language-model'
-    | '/settings/prompt-templates'
+  to: '/' | '/settings' | '/settings/appearance' | '/settings/prompt-templates'
   id:
     | '__root__'
     | '/'
     | '/settings'
     | '/settings/appearance'
-    | '/settings/language-model'
     | '/settings/prompt-templates'
   fileRoutesById: FileRoutesById
 }
@@ -190,16 +164,11 @@ export const routeTree = rootRoute
       "filePath": "settings/route.tsx",
       "children": [
         "/settings/appearance",
-        "/settings/language-model",
         "/settings/prompt-templates"
       ]
     },
     "/settings/appearance": {
       "filePath": "settings/appearance.tsx",
-      "parent": "/settings"
-    },
-    "/settings/language-model": {
-      "filePath": "settings/language-model.tsx",
       "parent": "/settings"
     },
     "/settings/prompt-templates": {

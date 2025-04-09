@@ -10,7 +10,6 @@ import {
 
 const settingsUrls = [
   { url: "/settings/prompt-templates", title: "Prompt Templates" },
-  { url: "/settings/language-model", title: "Language Model" },
   // { url: "/settings/appearance", title: "Appearance" },
 ] as const;
 
