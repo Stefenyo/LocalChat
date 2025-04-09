@@ -14,7 +14,7 @@ const BasePromptComponent = () => {
 
   return (
     <Card variant="surface">
-      <Flex direction="column" gap="4">
+      <Flex direction="column" gap="4" p="2">
         <Flex direction="row" gap="4" align="center" justify="between">
           <Flex direction="column" gap="2" style={{ maxWidth: "30rem" }}>
             <Text size="2" weight="bold">

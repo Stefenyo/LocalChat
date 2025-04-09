@@ -5,6 +5,7 @@ import {
   Text,
   IconButton,
   Separator,
+  Box,
 } from "@radix-ui/themes";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Modal } from "./Modal";
@@ -37,38 +38,40 @@ const SubPromptItem: FC<Props> = ({
   return (
     <>
       <Separator orientation="horizontal" size="4" />
-      <Flex direction="row" gap="6" justify="between" pt="4" pb="4">
-        <Text size="1" weight="bold">
-          {title}
-        </Text>
+      <Box p="2">
+        <Flex direction="row" gap="6" pt="4" pb="4">
+          <Text size="1" weight="bold">
+            {title}
+          </Text>
 
-        <Text truncate size="1" style={{ flex: 1 }}>
-          {prompt}
-        </Text>
+          <Text truncate size="1" style={{ flex: 1 }}>
+            {prompt}
+          </Text>
 
-        <DropdownMenu.Root modal={false}>
-          <DropdownMenu.Trigger>
-            <IconButton variant="ghost" style={{ cursor: "pointer" }}>
-              <DotsHorizontalIcon />
-            </IconButton>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item
-              onClick={() => setEditMode(true)}
-              style={{ cursor: "pointer" }}
-            >
-              Edit
-            </DropdownMenu.Item>
-            <DropdownMenu.Item
-              color="red"
-              onClick={onDelete}
-              style={{ cursor: "pointer" }}
-            >
-              Delete
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Root>
-      </Flex>
+          <DropdownMenu.Root modal={false}>
+            <DropdownMenu.Trigger>
+              <IconButton variant="ghost" style={{ cursor: "pointer" }}>
+                <DotsHorizontalIcon />
+              </IconButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content>
+              <DropdownMenu.Item
+                onClick={() => setEditMode(true)}
+                style={{ cursor: "pointer" }}
+              >
+                Edit
+              </DropdownMenu.Item>
+              <DropdownMenu.Item
+                color="red"
+                onClick={onDelete}
+                style={{ cursor: "pointer" }}
+              >
+                Delete
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+        </Flex>
+      </Box>
       {renderModal()}
     </>
   );
