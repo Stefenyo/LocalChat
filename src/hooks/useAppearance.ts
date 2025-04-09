@@ -64,3 +64,4 @@ const useAppearance = () => {
 };
 
 export { useAppearance };
+export type { ThemeConfig };
