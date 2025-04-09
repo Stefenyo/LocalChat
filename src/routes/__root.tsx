@@ -16,7 +16,8 @@ const RouteComponent: FC = () => {
     select: (state) => state.location.pathname,
   });
 
-  const { config } = useAppearance();
+  const { config, selectedTheme, updatedSelectedTheme, themesList } =
+    useAppearance();
 
   const renderBackButton = () => (currentPath !== "/" ? <HomeButton /> : null);
   return (
@@ -29,7 +30,11 @@ const RouteComponent: FC = () => {
         hasBackground={false}
       >
         {renderBackButton()}
-        <UserMenu />
+        <UserMenu
+          currentTheme={selectedTheme}
+          onThemeChange={updatedSelectedTheme}
+          themeList={themesList}
+        />
         <Outlet />
       </Theme>
       <ShaderGradientBg color={config.bgGradient} />
