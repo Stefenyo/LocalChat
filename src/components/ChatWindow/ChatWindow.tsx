@@ -6,29 +6,23 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import { StyledFormWrapper } from "./Chat.styles";
 import { Flex, Heading, IconButton, Spinner } from "@radix-ui/themes";
-import { Message } from "@/components/Message";
-import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
-import type { Document } from "langchain/document";
-import { useGetOllamaModels } from "@/hooks/useGetOllamaModels";
-import { ErrorMessage } from "../ErrorMessage";
-import { useGetResponse } from "@/hooks/useGetResponse";
-import { ChatInput } from "../ChatInput";
-import { ModelSelect } from "../ModelSelect";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import { ErrorMessage } from "@/components/ErrorMessage";
+import { ModelSelect } from "@/components/ModelSelect";
+import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
+import { Message } from "./Message";
+import { ChatInput } from "./ChatInput";
+import { StyledFormWrapper } from "./ChatWindow.styles";
+import { useGetOllamaModels } from "@/hooks/useGetOllamaModels";
+import { useGetResponse } from "@/hooks/useGetResponse";
+import { MessageProps } from "./Message/Message";
 
-interface Message {
-  type: "Human" | "Ai";
-  message: string;
-  sourceDocs?: Document[];
-}
-
-const Chat: FC = () => {
+const ChatWindow: FC = () => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [currentResponse, setCurrentResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<MessageProps[]>([]);
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -196,4 +190,4 @@ const Chat: FC = () => {
   );
 };
 
-export { Chat };
+export { ChatWindow };
