@@ -89,7 +89,7 @@ const ChatWindow: FC = () => {
     !messages.length ? (
       <Heading
         size="9"
-        weight="medium"
+        weight="bold"
         align="center"
         data-testid="intro-heading"
       >
