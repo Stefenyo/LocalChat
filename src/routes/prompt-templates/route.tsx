@@ -1,6 +1,5 @@
 import { StyledFlexContainer } from "@/components/StyledComponents";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { Button, Flex, Heading, TabNav } from "@radix-ui/themes";
+import { Flex, Heading, TabNav } from "@radix-ui/themes";
 import {
   Link,
   Outlet,
@@ -11,7 +10,6 @@ import {
 const promptTemplateUrls = [
   { url: "/prompt-templates/base", title: "Base" },
   { url: "/prompt-templates/sub-prompts", title: "Sub Prompts" },
-  // { url: "/settings/appearance", title: "Appearance" },
 ] as const;
 
 const SettingsLayoutComponent = () => {
@@ -22,17 +20,6 @@ const SettingsLayoutComponent = () => {
   return (
     <>
       <StyledFlexContainer direction="column">
-        <Button
-          variant="ghost"
-          radius="large"
-          size="2"
-          style={{ alignSelf: "flex-start", cursor: "pointer" }}
-          asChild
-        >
-          <Link to="/">
-            <ArrowLeftIcon /> return to chat
-          </Link>
-        </Button>
         <Flex direction="column" flexGrow="1" mt="6">
           <Heading size="9" weight="medium">
             Prompt Templates
