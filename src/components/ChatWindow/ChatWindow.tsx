@@ -51,7 +51,6 @@ const ChatWindow: FC = () => {
     // console.log("userInput", textAreaRef?.current?.value);
     if (!userInput || !userInput?.trim()) return;
 
-    console.log("userInput", textAreaRef?.current?.value);
     setMessages((state) => [...state, { type: "Human", message: userInput }]);
 
     clearUI();
@@ -171,7 +170,10 @@ const ChatWindow: FC = () => {
             size="1"
             selectedModel={selectedModel}
             modelList={modelList}
-            onModelChange={updateSelectedModel}
+            onModelChange={(model) => {
+              updateSelectedModel(model);
+              focusInput();
+            }}
           />
           <IconButton
             size="2"
