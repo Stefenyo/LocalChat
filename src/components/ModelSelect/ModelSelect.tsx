@@ -26,10 +26,10 @@ const ModelSelect: FC<Props> = ({
       size={size}
       disabled={disabled}
     >
-      <Select.Trigger placeholder="Models" />
+      <Select.Trigger placeholder="Models" variant="ghost" />
       <Select.Content>
         <Select.Group>
-          <Select.Label>Models</Select.Label>
+          <Select.Label style={{ outline: "none" }}>Models</Select.Label>
           {modelList.map((model) => (
             <Select.Item key={model} value={model}>
               {model}
