@@ -26,7 +26,11 @@ const ModelSelect: FC<Props> = ({
       size={size}
       disabled={disabled}
     >
-      <Select.Trigger placeholder="Models" variant="ghost" />
+      <Select.Trigger
+        placeholder="Models"
+        variant="ghost"
+        style={{ outline: "none" }}
+      />
       <Select.Content>
         <Select.Group>
           <Select.Label style={{ outline: "none" }}>Models</Select.Label>

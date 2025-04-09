@@ -142,7 +142,7 @@ const Chat: FC = () => {
 
   const renderNoModelError = () =>
     !selectedModel ? (
-      <ErrorMessage>Please Select a model to continue</ErrorMessage>
+      <ErrorMessage>Please select a model to continue</ErrorMessage>
     ) : null;
 
   return (
@@ -172,7 +172,7 @@ const Chat: FC = () => {
           }}
           disabled={!selectedModel || isLoading}
         />
-        <Flex justify="between">
+        <Flex justify="between" align="center">
           <ModelSelect
             size="1"
             selectedModel={selectedModel}
