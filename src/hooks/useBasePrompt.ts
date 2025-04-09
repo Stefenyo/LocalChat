@@ -5,9 +5,7 @@ const LOCALSTORAGE_KEY = "LC_basePrompt";
 const initializeBasePrompt = () => {
   const storedBasePrompt = localStorage.getItem(LOCALSTORAGE_KEY);
 
-  return storedBasePrompt
-    ? storedBasePrompt
-    : `You are a helpful assistant. You will be given a question and you will answer it in detail.`;
+  return storedBasePrompt ? storedBasePrompt : ``;
 };
 
 const useBasePrompt = () => {
