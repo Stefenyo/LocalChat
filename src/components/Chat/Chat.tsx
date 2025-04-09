@@ -7,15 +7,16 @@ import {
   useMemo,
 } from "react";
 import { StyledFormWrapper } from "./Chat.styles";
-import { Flex, Heading, Spinner } from "@radix-ui/themes";
+import { Flex, Heading, IconButton, Spinner } from "@radix-ui/themes";
 import { Message } from "@/components/Message";
 import { StyledFlexContainer } from "@/components/StyledComponents/StyledFlexContainer";
 import type { Document } from "langchain/document";
-import { useSelectedModel } from "@/hooks/useSelectedModel";
+import { useGetOllamaModels } from "@/hooks/useGetOllamaModels";
 import { ErrorMessage } from "../ErrorMessage";
-import { Link } from "@tanstack/react-router";
 import { useGetResponse } from "@/hooks/useGetResponse";
 import { ChatInput } from "../ChatInput";
+import { ModelSelect } from "../ModelSelect";
+import { PaperPlaneIcon } from "@radix-ui/react-icons";
 
 interface Message {
   type: "Human" | "Ai";
@@ -24,6 +25,7 @@ interface Message {
 }
 
 const Chat: FC = () => {
+  const [currentMessage, setCurrentMessage] = useState("");
   const [currentResponse, setCurrentResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -31,8 +33,10 @@ const Chat: FC = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { selectedModel } = useSelectedModel();
-  const getResponse = useGetResponse();
+  const { selectedModel, modelList, updateSelectedModel } =
+    useGetOllamaModels();
+
+  const getResponse = useGetResponse({ selectedModel });
 
   const chatHistory = useMemo(() => {
     return messages
@@ -40,14 +44,11 @@ const Chat: FC = () => {
       .join("\n");
   }, [messages]);
 
-  const clearInput = () => (textAreaRef.current!.value = "");
   const focusInput = () => textAreaRef.current?.focus();
-
-  focusInput();
 
   const clearUI = () => {
     setCurrentResponse("");
-    clearInput();
+    setCurrentMessage("");
   };
 
   const handleSubmit = async () => {
@@ -68,8 +69,6 @@ const Chat: FC = () => {
         history: chatHistory,
       });
 
-      setIsLoading(false);
-
       let aiResponse = "";
       for await (const chunk of data) {
         aiResponse += chunk.response;
@@ -80,6 +79,9 @@ const Chat: FC = () => {
     } catch (error) {
       setIsLoading(false);
       console.error("Error fetching response:", error);
+    } finally {
+      setIsLoading(false);
+      focusInput();
     }
   };
 
@@ -140,12 +142,7 @@ const Chat: FC = () => {
 
   const renderNoModelError = () =>
     !selectedModel ? (
-      <ErrorMessage>
-        No model selected. Please select a model in the{" "}
-        <Link to="/settings/language-model" style={{ color: "var(--gray-12)" }}>
-          settings menu
-        </Link>
-      </ErrorMessage>
+      <ErrorMessage>Please Select a model to continue</ErrorMessage>
     ) : null;
 
   return (
@@ -165,6 +162,8 @@ const Chat: FC = () => {
           mb="2"
           placeholder="How can I help you today?"
           ref={textAreaRef}
+          value={currentMessage}
+          onChange={(e) => setCurrentMessage(e.target.value)}
           onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
@@ -173,6 +172,25 @@ const Chat: FC = () => {
           }}
           disabled={!selectedModel || isLoading}
         />
+        <Flex justify="between">
+          <ModelSelect
+            size="1"
+            selectedModel={selectedModel}
+            modelList={modelList}
+            onModelChange={updateSelectedModel}
+          />
+          <IconButton
+            size="2"
+            disabled={
+              !selectedModel || isLoading || !textAreaRef?.current?.value
+            }
+            onClick={handleSubmit}
+            data-testid="submit-button"
+            aria-label="Submit"
+          >
+            <PaperPlaneIcon />
+          </IconButton>
+        </Flex>
       </StyledFormWrapper>
     </>
   );

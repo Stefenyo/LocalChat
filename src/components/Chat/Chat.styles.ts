@@ -10,7 +10,7 @@ export const StyledFormWrapper = styled(Card)`
   max-width: ${MAX_WIDTH};
   justify-content: center;
   position: fixed;
-  bottom: -8px;
+  bottom: -0.5rem;
   padding-bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
