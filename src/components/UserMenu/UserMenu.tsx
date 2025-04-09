@@ -2,7 +2,7 @@ import { GearIcon } from "@radix-ui/react-icons";
 import { Button, DropdownMenu } from "@radix-ui/themes";
 import { FC } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { settingsUrls } from "@/routes/settings/route";
+import { settingsUrls } from "@/routes/prompt-templates/route";
 
 const UserMenu: FC = () => {
   const navigate = useNavigate();

@@ -9,7 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 const settingsUrls = [
-  { url: "/settings/prompt-templates", title: "Prompt Templates" },
+  { url: "/prompt-templates/base", title: "Base" },
+  { url: "/prompt-templates/sub-prompts", title: "Sub Prompts" },
   // { url: "/settings/appearance", title: "Appearance" },
 ] as const;
 
@@ -34,7 +35,7 @@ const SettingsLayoutComponent = () => {
         </Button>
         <Flex direction="column" flexGrow="1" mt="6">
           <Heading size="9" weight="medium">
-            Settings
+            Prompt Templates
           </Heading>
 
           <TabNav.Root mt="8" mb="6">
@@ -55,7 +56,7 @@ const SettingsLayoutComponent = () => {
   );
 };
 
-const Route = createFileRoute("/settings")({
+const Route = createFileRoute("/prompt-templates")({
   component: SettingsLayoutComponent,
 });
 

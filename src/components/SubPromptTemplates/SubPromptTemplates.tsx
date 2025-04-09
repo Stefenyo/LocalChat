@@ -30,9 +30,9 @@ const SubPromptTemplates: FC = () => {
                 Sub Prompt Templates
               </Text>
               <Text size="1" weight="regular" color="gray">
-                Add sub prompt templates that can be added to the base prompt to
-                influence the AI model's response. These can be selected from
-                the chat UI.
+                Sub prompts serve as additional prompts that can be combined
+                with the base prompt. Once added, these can be selected from the
+                chat input.
               </Text>
             </Flex>
 

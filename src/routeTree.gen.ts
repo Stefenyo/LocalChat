@@ -11,16 +11,16 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as SettingsRouteImport } from './routes/settings/route'
+import { Route as PromptTemplatesRouteImport } from './routes/prompt-templates/route'
 import { Route as IndexImport } from './routes/index'
-import { Route as SettingsPromptTemplatesImport } from './routes/settings/prompt-templates'
-import { Route as SettingsAppearanceImport } from './routes/settings/appearance'
+import { Route as PromptTemplatesSubPromptsImport } from './routes/prompt-templates/sub-prompts'
+import { Route as PromptTemplatesBaseImport } from './routes/prompt-templates/base'
 
 // Create/Update Routes
 
-const SettingsRouteRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
+const PromptTemplatesRouteRoute = PromptTemplatesRouteImport.update({
+  id: '/prompt-templates',
+  path: '/prompt-templates',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -30,16 +30,16 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const SettingsPromptTemplatesRoute = SettingsPromptTemplatesImport.update({
-  id: '/prompt-templates',
-  path: '/prompt-templates',
-  getParentRoute: () => SettingsRouteRoute,
+const PromptTemplatesSubPromptsRoute = PromptTemplatesSubPromptsImport.update({
+  id: '/sub-prompts',
+  path: '/sub-prompts',
+  getParentRoute: () => PromptTemplatesRouteRoute,
 } as any)
 
-const SettingsAppearanceRoute = SettingsAppearanceImport.update({
-  id: '/appearance',
-  path: '/appearance',
-  getParentRoute: () => SettingsRouteRoute,
+const PromptTemplatesBaseRoute = PromptTemplatesBaseImport.update({
+  id: '/base',
+  path: '/base',
+  getParentRoute: () => PromptTemplatesRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -53,94 +53,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
+    '/prompt-templates': {
+      id: '/prompt-templates'
+      path: '/prompt-templates'
+      fullPath: '/prompt-templates'
+      preLoaderRoute: typeof PromptTemplatesRouteImport
       parentRoute: typeof rootRoute
     }
-    '/settings/appearance': {
-      id: '/settings/appearance'
-      path: '/appearance'
-      fullPath: '/settings/appearance'
-      preLoaderRoute: typeof SettingsAppearanceImport
-      parentRoute: typeof SettingsRouteImport
+    '/prompt-templates/base': {
+      id: '/prompt-templates/base'
+      path: '/base'
+      fullPath: '/prompt-templates/base'
+      preLoaderRoute: typeof PromptTemplatesBaseImport
+      parentRoute: typeof PromptTemplatesRouteImport
     }
-    '/settings/prompt-templates': {
-      id: '/settings/prompt-templates'
-      path: '/prompt-templates'
-      fullPath: '/settings/prompt-templates'
-      preLoaderRoute: typeof SettingsPromptTemplatesImport
-      parentRoute: typeof SettingsRouteImport
+    '/prompt-templates/sub-prompts': {
+      id: '/prompt-templates/sub-prompts'
+      path: '/sub-prompts'
+      fullPath: '/prompt-templates/sub-prompts'
+      preLoaderRoute: typeof PromptTemplatesSubPromptsImport
+      parentRoute: typeof PromptTemplatesRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface SettingsRouteRouteChildren {
-  SettingsAppearanceRoute: typeof SettingsAppearanceRoute
-  SettingsPromptTemplatesRoute: typeof SettingsPromptTemplatesRoute
+interface PromptTemplatesRouteRouteChildren {
+  PromptTemplatesBaseRoute: typeof PromptTemplatesBaseRoute
+  PromptTemplatesSubPromptsRoute: typeof PromptTemplatesSubPromptsRoute
 }
 
-const SettingsRouteRouteChildren: SettingsRouteRouteChildren = {
-  SettingsAppearanceRoute: SettingsAppearanceRoute,
-  SettingsPromptTemplatesRoute: SettingsPromptTemplatesRoute,
+const PromptTemplatesRouteRouteChildren: PromptTemplatesRouteRouteChildren = {
+  PromptTemplatesBaseRoute: PromptTemplatesBaseRoute,
+  PromptTemplatesSubPromptsRoute: PromptTemplatesSubPromptsRoute,
 }
 
-const SettingsRouteRouteWithChildren = SettingsRouteRoute._addFileChildren(
-  SettingsRouteRouteChildren,
-)
+const PromptTemplatesRouteRouteWithChildren =
+  PromptTemplatesRouteRoute._addFileChildren(PromptTemplatesRouteRouteChildren)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRouteRouteWithChildren
-  '/settings/appearance': typeof SettingsAppearanceRoute
-  '/settings/prompt-templates': typeof SettingsPromptTemplatesRoute
+  '/prompt-templates': typeof PromptTemplatesRouteRouteWithChildren
+  '/prompt-templates/base': typeof PromptTemplatesBaseRoute
+  '/prompt-templates/sub-prompts': typeof PromptTemplatesSubPromptsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRouteRouteWithChildren
-  '/settings/appearance': typeof SettingsAppearanceRoute
-  '/settings/prompt-templates': typeof SettingsPromptTemplatesRoute
+  '/prompt-templates': typeof PromptTemplatesRouteRouteWithChildren
+  '/prompt-templates/base': typeof PromptTemplatesBaseRoute
+  '/prompt-templates/sub-prompts': typeof PromptTemplatesSubPromptsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRouteRouteWithChildren
-  '/settings/appearance': typeof SettingsAppearanceRoute
-  '/settings/prompt-templates': typeof SettingsPromptTemplatesRoute
+  '/prompt-templates': typeof PromptTemplatesRouteRouteWithChildren
+  '/prompt-templates/base': typeof PromptTemplatesBaseRoute
+  '/prompt-templates/sub-prompts': typeof PromptTemplatesSubPromptsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/settings'
-    | '/settings/appearance'
-    | '/settings/prompt-templates'
+    | '/prompt-templates'
+    | '/prompt-templates/base'
+    | '/prompt-templates/sub-prompts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/settings' | '/settings/appearance' | '/settings/prompt-templates'
+  to:
+    | '/'
+    | '/prompt-templates'
+    | '/prompt-templates/base'
+    | '/prompt-templates/sub-prompts'
   id:
     | '__root__'
     | '/'
-    | '/settings'
-    | '/settings/appearance'
-    | '/settings/prompt-templates'
+    | '/prompt-templates'
+    | '/prompt-templates/base'
+    | '/prompt-templates/sub-prompts'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SettingsRouteRoute: typeof SettingsRouteRouteWithChildren
+  PromptTemplatesRouteRoute: typeof PromptTemplatesRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SettingsRouteRoute: SettingsRouteRouteWithChildren,
+  PromptTemplatesRouteRoute: PromptTemplatesRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -154,26 +157,26 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/settings"
+        "/prompt-templates"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/settings": {
-      "filePath": "settings/route.tsx",
+    "/prompt-templates": {
+      "filePath": "prompt-templates/route.tsx",
       "children": [
-        "/settings/appearance",
-        "/settings/prompt-templates"
+        "/prompt-templates/base",
+        "/prompt-templates/sub-prompts"
       ]
     },
-    "/settings/appearance": {
-      "filePath": "settings/appearance.tsx",
-      "parent": "/settings"
+    "/prompt-templates/base": {
+      "filePath": "prompt-templates/base.tsx",
+      "parent": "/prompt-templates"
     },
-    "/settings/prompt-templates": {
-      "filePath": "settings/prompt-templates.tsx",
-      "parent": "/settings"
+    "/prompt-templates/sub-prompts": {
+      "filePath": "prompt-templates/sub-prompts.tsx",
+      "parent": "/prompt-templates"
     }
   }
 }

@@ -1,8 +1,9 @@
 import { type ChangeEvent, useState } from "react";
 import { useBasePrompt } from "@/hooks";
 import { Button, Card, Flex, Text, TextArea } from "@radix-ui/themes";
+import { createFileRoute } from "@tanstack/react-router";
 
-const BasePromptInput = () => {
+const BasePromptComponent = () => {
   const { basePrompt: savedBasePrompt, updateBasePrompt } = useBasePrompt();
 
   const [editedBasePrompt, setEditedBasePrompt] = useState(savedBasePrompt);
@@ -20,8 +21,7 @@ const BasePromptInput = () => {
               Base Prompt Template
             </Text>
             <Text size="1" weight="regular" color="gray">
-              Add a base prompt template that will be used as the base prompt
-              for the AI model.
+              This prompt will serve as the base for all your conversations.
             </Text>
           </Flex>
 
@@ -49,4 +49,8 @@ const BasePromptInput = () => {
   );
 };
 
-export { BasePromptInput };
+const Route = createFileRoute("/prompt-templates/base")({
+  component: BasePromptComponent,
+});
+
+export { Route };
