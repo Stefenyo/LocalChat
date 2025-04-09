@@ -6,10 +6,12 @@ interface Props {
   selectedModel: string;
   modelList: string[];
   onModelChange: (model: string) => void;
+  disabled?: boolean;
 }
 
 const ModelSelect: FC<Props> = ({
   size = "2",
+  disabled,
   selectedModel,
   modelList,
   onModelChange,
@@ -22,6 +24,7 @@ const ModelSelect: FC<Props> = ({
       value={selectedModel}
       onValueChange={onModelChange}
       size={size}
+      disabled={disabled}
     >
       <Select.Trigger placeholder="Models" />
       <Select.Content>
