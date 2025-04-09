@@ -8,7 +8,7 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 
-const settingsUrls = [
+const promptTemplateUrls = [
   { url: "/prompt-templates/base", title: "Base" },
   { url: "/prompt-templates/sub-prompts", title: "Sub Prompts" },
   // { url: "/settings/appearance", title: "Appearance" },
@@ -39,7 +39,7 @@ const SettingsLayoutComponent = () => {
           </Heading>
 
           <TabNav.Root mt="8" mb="6">
-            {settingsUrls.map((item) => (
+            {promptTemplateUrls.map((item) => (
               <TabNav.Link
                 asChild
                 key={item.url}
@@ -62,4 +62,4 @@ const Route = createFileRoute("/prompt-templates")({
 
 export { Route };
 // eslint-disable-next-line react-refresh/only-export-components
-export { settingsUrls };
+export { promptTemplateUrls };
