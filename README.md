@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# LocalChat (WIP)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Local Chat is a hobby project designed to experiment with new React technologies and UI techniques. While there are many chat interfaces available, this project serves as a playground for innovation and learning.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Ollama**: Ensure that Ollama is installed on your system with at least one model. You can find more information and download it from [Ollama's official website](https://ollama.com/).
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository**:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```bash
+   git clone <repository-url>
+   cd localChat
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Install dependencies**:
+   Make sure you have [Node.js](https://nodejs.org/) installed. Then run:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   npm install
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Running the Project
+
+- **Development Mode**:
+
+  ```bash
+  npm run dev
+  ```
+
+  This will start the Vite development server which can be access in your browser at `http://localhost:5173/`
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A build tool that provides a faster and leaner development experience for modern web projects.
+- **Langchain**: Used for integrating language models.
+- **Styled Components**: For styling React components.
+
+## Contributing
+
+This is a personal project, but feel free to fork the repository and experiment on your own.
+
+## License
+
+This project is licensed under the MIT License.
